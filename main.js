@@ -26,7 +26,7 @@ const imagesPath = [
 
 // creo una stringa vuota per inserire le immagini nel DOM a ciclo finito
 let imagesAdd = "";
-
+    
 // CICLO WHILE
 // specifichiamo solo la condizione da dicchiarare ad ogni giro
 // dicchiaro la variabile fuori
@@ -51,18 +51,15 @@ let currentImage = [0];
 // mi restituisce un array di immagini, e con currentImage prendo l'immagine dell'array e la imposto a 0
 const images = document.querySelectorAll('.carousel-container img');
 // do la classe active (display: block) alla prima immagine dell'array, assegnando display: non a tute le altre
-images[currentImage].classList.add('active');
+images[currentImage].classList.add('active');    
 
 
+/********** functions *********/
 
-// NEXT BUTTON 
-document.querySelector('#nextBtn').addEventListener('click', function() {
-    console.log('avanti');
-
+function next() {
     // se lelemento ha n elementi, l'ultimo elemento sarà n-1
     // ci interessa andare avanti fino a quando non raggiungo l'ultima immagine
     if (currentImage < images.length-1) {
-        
         // rimuovo la clsse active(display:block) e rendo l'immagine corrente invisibile
         images[currentImage].classList.remove('active');
         // aggiorno il contatore dell'immagine attiale, incrementandolo di 1
@@ -75,12 +72,11 @@ document.querySelector('#nextBtn').addEventListener('click', function() {
         currentImage = [0];
         images[currentImage].classList.add('active');
     }
+}
 
-});
 
-document.querySelector('#prevBtn').addEventListener('click', function() {
-    console.log('indietro');
 
+function previous() {
     if (currentImage > 0) {
         images[currentImage].classList.remove('active');
         currentImage--;
@@ -90,4 +86,20 @@ document.querySelector('#prevBtn').addEventListener('click', function() {
         currentImage = images.length-1;
         images[currentImage].classList.add('active');
     }
+}
+
+
+// NEXT BUTTON 
+document.querySelector('#nextBtn').addEventListener('click', function() {
+    console.log('avanti');
+    next();
 });
+
+// PREVIOUS BUTTON
+document.querySelector('#prevBtn').addEventListener('click', function() {
+    console.log('indietro');
+    previous();
+});
+
+// add setIntervall
+setInterval(next, 2500);
