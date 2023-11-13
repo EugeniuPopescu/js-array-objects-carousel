@@ -32,7 +32,7 @@ let imagesAdd = "";
 // dicchiaro la variabile fuori
 let i = 0;
 while (i < imagesPath.length) {
-    const imagePath = imagesPath[i]; 
+    const imagePath = imagesPath[i].image; 
     // inserisco nella stringa vuota il codice html del singolo percorso all'atributo src 
     imagesAdd += `<img src="${imagePath}">`;
 
